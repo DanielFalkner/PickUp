@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Essentials;
 
+
 namespace PickUpApp.Models
 {
     internal class Person
@@ -59,8 +60,7 @@ namespace PickUpApp.Models
     }
 
 
-
-    
-    
-
 }
+    
+   
+     
