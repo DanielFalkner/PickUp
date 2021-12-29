@@ -9,7 +9,7 @@ namespace PickUpApp.Views
     {
         public AboutPage()
         {
-            InitializeComponent();
+           // InitializeComponent();
         }
     }
 }
