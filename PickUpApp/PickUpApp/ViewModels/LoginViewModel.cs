@@ -1,24 +1,47 @@
 ﻿using PickUpApp.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using Xamarin.Forms;
 
 namespace PickUpApp.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    public class LoginViewModel : System.ComponentModel.INotifyPropertyChanged
     {
-        public Command LoginCommand { get; }
-
+        public Action DisplayInvalidLoginPrompt;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged = delegate { };
+        private string email;
+        public string Email
+        {
+            get { return email; }
+            set
+            {
+                email = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Email"));
+            }
+        }
+        private string password;
+        public string Password
+        {
+            get { return password; }
+            set
+            {
+                password = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Password"));
+            }
+        }
+        public System.Windows.Input.ICommand SubmitCommand { protected set; get; }
         public LoginViewModel()
         {
-            LoginCommand = new Command(OnLoginClicked);
+            SubmitCommand = new Command(OnSubmit);
         }
-
-        private async void OnLoginClicked(object obj)
+        public void OnSubmit()
         {
-            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+            if (email != "macoratti@yahoo.com" || password != "secret")
+            {
+                DisplayInvalidLoginPrompt();
+            }
         }
     }
 }

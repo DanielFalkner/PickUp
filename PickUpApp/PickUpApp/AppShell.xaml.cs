@@ -8,7 +8,7 @@ namespace PickUpApp
 {
     public partial class AppShell : Xamarin.Forms.Shell
     {
-        public AppShell()
+        public AppShell(LoginPage loginPage)
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
