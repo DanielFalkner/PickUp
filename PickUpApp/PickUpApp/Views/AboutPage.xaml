@@ -13,7 +13,7 @@
                 <Button Text="Bestellübersicht" Command="{Binding SaveCommand}" BackgroundColor="CadetBlue" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="QR Code" Command="{Binding SaveCommand}" BackgroundColor="CadetBlue" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Status" Command="{Binding SaveCommand}" BackgroundColor="CadetBlue" HorizontalOptions="FillAndExpand"></Button>
-                <Button Text="Abholstation" Command="{Binding SaveCommand}" BackgroundColor="CadetBlue" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Behälter retounieren" Clicked="OnReturnButtonClicked" BackgroundColor="CadetBlue" HorizontalOptions="FillAndExpand"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

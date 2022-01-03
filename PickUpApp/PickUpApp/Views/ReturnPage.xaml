@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PickUpApp.Views.ReturnPage">
+    <StackLayout Margin="0,0,0,0">
+        <Label Text="Boxdaten auswählen" HorizontalTextAlignment="Center" TextColor="Black" FontSize="22"/>
+        <Picker x:Name="picker"
+        Title="Boxgröße:"
+        TitleColor="#2196F3">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Small</x:String>
+                    <x:String>Medium</x:String>
+                    <x:String>Large</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Button Text="Zur Station bringen" Clicked="OnStationClicked"/>
+            <Button Text="Abholen lassen" Clicked="OnDeliveryClicked"/>
+        </StackLayout>
+
+        <Grid x:Name="Grid1" IsVisible="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Label FontSize="Medium" HorizontalTextAlignment="Center" Text="Route zur nähesten Station wird in Google Maps geladen"/>
+            </Grid>
+            <Grid Grid.Row="1" HeightRequest="100" WidthRequest="375" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+                <Button Text="Für Retounierung an nähester Station anmelden"/>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="Grid2" IsVisible="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Label FontSize="Medium" HorizontalTextAlignment="Center" Text="Aktive Bestellung notwendig um Abholung der Box durch einen Lieferanten auszuwählen"/>
+            </Grid>
+            <Grid Grid.Row="1" HeightRequest="100" WidthRequest="375" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+                <Button Text="Für Abholung von Lieferant anmelden"/>
+            </Grid>
+        </Grid>
+
+    </StackLayout>
+
+</ContentPage>

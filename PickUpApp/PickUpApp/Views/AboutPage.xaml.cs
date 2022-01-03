@@ -11,5 +11,10 @@ namespace PickUpApp.Views
         {
            InitializeComponent();
         }
+
+        private async void OnReturnButtonClicked(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new ReturnPage());
+        }
     }
 }
