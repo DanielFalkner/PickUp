@@ -38,7 +38,7 @@ namespace PickUpApp.Views
 
         private void CreatePersonClicked(object sender, EventArgs e)
         {
-            Person person = new Person(entry.Text);
+//            Person person = new Person(entry.Text);
 //          testLabel.SetValue(person.Name);
         }
     }
