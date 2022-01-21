@@ -28,10 +28,5 @@ namespace PickUpApp.Views
                 DisplayAlert("LoginErrorMessage", "Username or Password incorrect","Okay");
             }
         }
-
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new NewItemPage());
-        }
     }
 }

@@ -5,7 +5,7 @@ using Xamarin.Essentials;
 
 namespace PickUpApp.Models
 {
-    internal class Station : Location
+    public class Station : Location
     {
         //private Map<Size, amount> place;
         private int id;

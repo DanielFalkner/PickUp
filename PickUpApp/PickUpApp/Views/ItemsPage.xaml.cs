@@ -28,5 +28,16 @@ namespace PickUpApp.Views
             base.OnAppearing();
             _viewModel.OnAppearing();
         }
+
+        private async void OnItemDetailPageClicked(object sender, EventArgs args)
+        {
+            string button = ((Button)sender).Text;
+            await Navigation.PushAsync(new ItemDetailPage(button));
+        }
+        private async void OnNewItemPageClicked(object sender, EventArgs e)
+        {
+           await Navigation.PushAsync(new NewItemPage(_viewModel));
+        }
+
     }
 }

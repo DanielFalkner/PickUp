@@ -9,12 +9,17 @@ namespace PickUpApp.Views
     {
         public AboutPage()
         {
-           InitializeComponent();
+            InitializeComponent();
         }
 
         private async void OnReturnButtonClicked(object sender, EventArgs args)
         {
             await Navigation.PushAsync(new ReturnPage());
+        }
+
+        private void OnItemsButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ItemsPage());
         }
     }
 }

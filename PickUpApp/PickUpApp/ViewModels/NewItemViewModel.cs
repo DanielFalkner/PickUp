@@ -10,20 +10,20 @@ namespace PickUpApp.ViewModels
     public class NewItemViewModel : BaseViewModel
     {
         private string text;
-        private string description;
+        private ItemsViewModel ItemsViewModel { get; set; }
 
-        public NewItemViewModel()
+        public NewItemViewModel(ItemsViewModel itemsViewModel)
         {
             SaveCommand = new Command(OnSave, ValidateSave);
             CancelCommand = new Command(OnCancel);
             this.PropertyChanged +=
                 (_, __) => SaveCommand.ChangeCanExecute();
+            ItemsViewModel = itemsViewModel;
         }
 
         private bool ValidateSave()
         {
-            return !String.IsNullOrWhiteSpace(text)
-                && !String.IsNullOrWhiteSpace(description);
+            return !String.IsNullOrWhiteSpace(text);
         }
 
         public string Text
@@ -32,34 +32,23 @@ namespace PickUpApp.ViewModels
             set => SetProperty(ref text, value);
         }
 
-        public string Description
-        {
-            get => description;
-            set => SetProperty(ref description, value);
-        }
-
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
 
         private async void OnCancel()
         {
             // This will pop the current page off the navigation stack
-            await Shell.Current.GoToAsync("..");
+            //await Shell.Current.GoToAsync("..");
         }
 
         private async void OnSave()
         {
-            Item newItem = new Item()
-            {
-                Id = Guid.NewGuid().ToString(),
-                Text = Text,
-                Description = Description
-            };
+            Delivery newItem = await DataStore.GetItemAsync(Text);
 
-            await DataStore.AddItemAsync(newItem);
+            ItemsViewModel.Items.Add(newItem);
 
             // This will pop the current page off the navigation stack
-            await Shell.Current.GoToAsync("..");
+            //await Shell.Current.GoToAsync("..");
         }
     }
 }

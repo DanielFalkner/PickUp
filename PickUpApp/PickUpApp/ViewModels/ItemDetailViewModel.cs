@@ -3,27 +3,36 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Size = PickUpApp.Models.Size;
 
 namespace PickUpApp.ViewModels
 {
-    [QueryProperty(nameof(ItemId), nameof(ItemId))]
+    //[QueryProperty(nameof(ItemId), nameof(ItemId))]
     public class ItemDetailViewModel : BaseViewModel
     {
-        private string itemId;
-        private string text;
-        private string description;
-        public string Id { get; set; }
-
-        public string Text
+        public ItemDetailViewModel(string id)
         {
-            get => text;
-            set => SetProperty(ref text, value);
+            LoadItemId(id);
         }
 
-        public string Description
+        private string itemId;
+        private string sender;
+        private string status;
+        private DateTime estimatedDelivery;
+        private Size size;
+
+        //public string Id { get; set; }
+
+        public string Sender
         {
-            get => description;
-            set => SetProperty(ref description, value);
+            get => sender;
+            set => SetProperty(ref sender, value);
+        }
+
+        public string Status
+        {
+            get => status;
+            set => SetProperty(ref status, value);
         }
 
         public string ItemId
@@ -35,18 +44,23 @@ namespace PickUpApp.ViewModels
             set
             {
                 itemId = value;
-                LoadItemId(value);
+                //LoadItemId(value);
             }
         }
+
+        public DateTime EstimatedDelivery { get => estimatedDelivery; set => estimatedDelivery = value; }
+        public Size Size { get => size; set => size = value; }
 
         public async void LoadItemId(string itemId)
         {
             try
             {
                 var item = await DataStore.GetItemAsync(itemId);
-                Id = item.Id;
-                Text = item.Text;
-                Description = item.Description;
+                ItemId = item.Id;
+                Sender = item.Sender.Name;
+                Status = item.Status.ToString();
+                EstimatedDelivery = item.EstimatedDelivery;
+                Size = item.Size;
             }
             catch (Exception)
             {
