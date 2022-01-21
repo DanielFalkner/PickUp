@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using PickUpApp.Models;
+using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Xamarin.Forms.Maps;
 
 namespace PickUpApp.Views
 {
-    using Xamarin.Essentials;
-    using Xamarin.Forms;
     public partial class ReturnPage : ContentPage
     {
         public ReturnPage()
@@ -20,6 +15,8 @@ namespace PickUpApp.Views
 
         private async void OnStationClicked(object sender, EventArgs e)
         {
+            Geocoder geoCoder = new Geocoder();
+
             Grid2.IsVisible = false;
             Grid1.IsVisible = true;
 
@@ -37,6 +34,12 @@ namespace PickUpApp.Views
         {
             Grid2.IsVisible = true;
             Grid1.IsVisible = false;
+        }
+
+        private void CreatePersonClicked(object sender, EventArgs e)
+        {
+            Person person = new Person(entry.Text);
+//          testLabel.SetValue(person.Name);
         }
     }
 }
