@@ -6,9 +6,9 @@ using Xamarin.Essentials;
 
 namespace PickUpApp.Models
 {
-    internal class Delivery
+    public class Delivery
     {
-        private int id;
+        private string id;
         private Person sender;
         private Person receiver;
         private double weight;
@@ -20,7 +20,7 @@ namespace PickUpApp.Models
         private Person detour;
         private string signatureReleaseAuthorization;
 
-        public Delivery(int id, Person sender, Person receiver, double weight, Size size, QRCode qrCode, Status status, Location location, DateTime estimatedDelivery , Person detour = null , string signatureReleaseAuthorization = "")
+        public Delivery(string id, Person sender, Person receiver, double weight, Size size, QRCode qrCode, Status status, Location location, DateTime estimatedDelivery , Person detour = null , string signatureReleaseAuthorization = "")
         {
             this.id = id;
             this.sender = sender;
@@ -35,7 +35,7 @@ namespace PickUpApp.Models
             this.signatureReleaseAuthorization = signatureReleaseAuthorization;
         }
 
-        public int Id { get => id; set => id = value; }
+        public string Id { get => id; set => id = value; }
         public Person Receiver { get => receiver; set => receiver = value; }
         public double Weight { get => weight; set => weight = value; }
         public QRCode QRCode { get => qrCode; set => qrCode = value; }

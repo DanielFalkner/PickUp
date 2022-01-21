@@ -10,24 +10,24 @@ namespace PickUpApp.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        private Item _selectedItem;
+        private Delivery _selectedItem;
 
-        public ObservableCollection<Item> Items { get; }
-        public Command LoadItemsCommand { get; }
+        public ObservableCollection<Delivery> Items { get; }
+        //public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
-        public Command<Item> ItemTapped { get; }
+        public Command<Delivery> ItemTapped { get; }
 
         public ItemsViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            Items = new ObservableCollection<Delivery>();
+            //LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            ItemTapped = new Command<Item>(OnItemSelected);
+            ItemTapped = new Command<Delivery>(OnItemSelected);
 
             AddItemCommand = new Command(OnAddItem);
         }
-
+        /*
         async Task ExecuteLoadItemsCommand()
         {
             IsBusy = true;
@@ -49,15 +49,16 @@ namespace PickUpApp.ViewModels
             {
                 IsBusy = false;
             }
-        }
-
+        }*/
+        
+        // TODO löschen
         public void OnAppearing()
         {
             IsBusy = true;
             SelectedItem = null;
         }
 
-        public Item SelectedItem
+        public Delivery SelectedItem
         {
             get => _selectedItem;
             set
@@ -72,7 +73,7 @@ namespace PickUpApp.ViewModels
             await Shell.Current.GoToAsync(nameof(NewItemPage));
         }
 
-        async void OnItemSelected(Item item)
+        async void OnItemSelected(Delivery item)
         {
             if (item == null)
                 return;

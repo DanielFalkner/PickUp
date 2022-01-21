@@ -4,11 +4,11 @@ using System.Text;
 
 namespace PickUpApp.Models
 {
-    internal enum Status
+    public enum Status
     {
-        IN_PROCESS,
-        SHIPPING,
-        DELIVERED,
-        PROBLEM_ENCOUNTERED
+        In_Bearbeitung,
+        Versendet,
+        Zugestellt,
+        auftretende_Probleme
     }
 }

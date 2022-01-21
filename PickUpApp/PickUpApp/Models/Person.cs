@@ -6,7 +6,7 @@ using Xamarin.Essentials;
 
 namespace PickUpApp.Models
 {
-    internal class Person
+    public class Person
     {
         private string name;
         private string mail;

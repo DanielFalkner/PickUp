@@ -4,10 +4,11 @@ using System.Text;
 
 namespace PickUpApp.Models
 {
-    internal enum Size
+    public enum Size
     {
-        SMALL,
-        MEDIUM,
-        LARGE
+        Klein,
+        Mittel,
+        Groß
     }
+    
 }

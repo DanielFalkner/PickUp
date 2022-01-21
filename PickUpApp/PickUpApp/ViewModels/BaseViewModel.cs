@@ -10,7 +10,7 @@ namespace PickUpApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<Delivery> DataStore => DependencyService.Get<IDataStore<Delivery>>();
 
         bool isBusy = false;
         public bool IsBusy

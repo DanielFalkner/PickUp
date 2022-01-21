@@ -10,12 +10,16 @@ namespace PickUpApp.Views
 {
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
 
-        public NewItemPage()
+        public NewItemPage(ItemsViewModel itemsViewModel)
         {
             InitializeComponent();
-            BindingContext = new NewItemViewModel();
+            BindingContext = new NewItemViewModel(itemsViewModel);
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Navigation.RemovePage(this);
         }
     }
 }
