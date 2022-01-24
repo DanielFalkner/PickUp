@@ -12,6 +12,8 @@ namespace PickUpApp.ViewModels
         public Action DisplayInvalidLoginPrompt;
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged = delegate { };
         private string email;
+        private string password;
+
         public string Email
         {
             get { return email; }
@@ -21,7 +23,6 @@ namespace PickUpApp.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs("Email"));
             }
         }
-        private string password;
         public string Password
         {
             get { return password; }
@@ -38,7 +39,7 @@ namespace PickUpApp.ViewModels
         }
         public void OnSubmit()
         {
-            if (email != "macoratti@yahoo.com" || password != "secret")
+            if (email != "admin" || password != "admin")
             {
                 DisplayInvalidLoginPrompt();
             }
