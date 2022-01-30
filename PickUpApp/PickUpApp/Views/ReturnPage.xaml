@@ -20,11 +20,6 @@
             <Button Text="Abholen lassen" Clicked="OnDeliveryClicked"/>
         </StackLayout>
 
-        <Label FontSize="Medium" HorizontalTextAlignment="Center" Text="Create Person:"/>
-        <Entry x:Name="entry" Text="Type in name: "/>
-        <Button Text="Create" Clicked="CreatePersonClicked"/>
-        <Label x:Name="testLabel" FontSize="Medium" HorizontalTextAlignment="Center" Text="person"/>
-
         <Grid x:Name="Grid1" IsVisible="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>

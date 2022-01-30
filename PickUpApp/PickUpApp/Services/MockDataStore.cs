@@ -10,6 +10,8 @@ namespace PickUpApp.Services
     {
         readonly List<Delivery> items;
 
+        List<Station> stations;
+
         public MockDataStore()
         {
             items = new List<Delivery>()
@@ -29,6 +31,18 @@ namespace PickUpApp.Services
                 new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
                 new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }*/
             };
+
+            stations = new List<Station>()
+            {
+                new Station(1, "Abholstation 4020", "48.303723880697106, 14.293336868540937", 48.303723880697106, 14.293336868540937),
+                new Station(2, "Abholstation 4040", "48.33612015604028, 14.31245863183628", 48.33612015604028, 14.31245863183628),
+                new Station(3, "Abholstation 4030", "48.258576817930646, 14.290852730776692", 48.258576817930646, 14.290852730776692)
+            };
+        }
+
+        public List<Station> GetStations()
+        {
+            return stations;
         }
 
         public async Task<bool> AddItemAsync(Delivery item)
