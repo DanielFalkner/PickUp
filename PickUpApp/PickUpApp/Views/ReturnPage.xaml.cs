@@ -2,6 +2,7 @@
 using PickUpApp.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -19,8 +20,7 @@ namespace PickUpApp.Views
             InitializeComponent();
         }
 
-        //has errors while executing
-        //possible solutions: calling maps link with coordinates -//- calling Xamarin.FormsMaps.Init() somewhere in the code
+        //not possible on emulator
         private async void OnStationClicked(object sender, EventArgs e)
         {
             Geocoder geoCoder = new Geocoder();
@@ -31,11 +31,17 @@ namespace PickUpApp.Views
 
             Station station = FindNearestStation(coordinates);
 
-            Position endPosition = new Position(station.getLatitude(), station.getLatitude());
-            IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(endPosition);
-            string address = possibleAddresses.FirstOrDefault();
+            Debug.WriteLine("TEST " + station.getName() + " TEST");
 
-            string route = "https://www.google.com/maps?saddr=Lentos,+4020+Linz&daddr=" + address;
+            //formats coordinates into address. not needed at the moment
+
+//            Position endPosition = new Position(station.getLatitude(), station.getLatitude());
+//            IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(endPosition);
+//            string address = possibleAddresses.FirstOrDefault();
+
+//            Debug.WriteLine("TEST " + address + " TEST");
+
+            string route = "https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=" + station.getCoordinates();
 
             Grid2.IsVisible = false;
             Grid1.IsVisible = true;
@@ -46,8 +52,9 @@ namespace PickUpApp.Views
             }
             else if (Device.RuntimePlatform == Device.iOS)
             {
-                await Launcher.OpenAsync("http://maps.apple.com/?daddr=Post+Abholstation+A,+CA&saddr=Lentos,+4020+Linz");
+                await Launcher.OpenAsync(route);
             }
+
         }
 
         private Station FindNearestStation(String demoCoordinates)

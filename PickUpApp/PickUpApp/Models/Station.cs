@@ -39,5 +39,10 @@ namespace PickUpApp.Models
             return longitude;
         }
 
+        public String getName()
+        {
+            return name;
+        }
+
     }
 }
