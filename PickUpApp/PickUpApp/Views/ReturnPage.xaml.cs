@@ -1,5 +1,6 @@
 ﻿using PickUpApp.Models;
 using PickUpApp.Services;
+using Plugin.Geolocator;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,7 +21,7 @@ namespace PickUpApp.Views
             InitializeComponent();
         }
 
-        //not possible on emulator
+        //not possible on emulator, only on android device (possibly on iOS as well, but not tested yet)
         private async void OnStationClicked(object sender, EventArgs e)
         {
             Geocoder geoCoder = new Geocoder();
@@ -29,17 +30,19 @@ namespace PickUpApp.Views
             Position startPosition = approximateLocations.FirstOrDefault();
             string coordinates = $"{startPosition.Latitude}, {startPosition.Longitude}";
 
+            Debug.WriteLine(coordinates);
+
+            var locator = CrossGeolocator.Current;
+            locator.DesiredAccuracy = 50;
+            var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(10000));
+
+            Debug.WriteLine("Position Status: {0}", position.Timestamp);
+            Debug.WriteLine("Position Latitude: {0}", position.Latitude);
+            Debug.WriteLine("Position Longitude: {0}", position.Longitude);
+
             Station station = FindNearestStation(coordinates);
 
             Debug.WriteLine("TEST " + station.getName() + " TEST");
-
-            //formats coordinates into address. not needed at the moment
-
-//            Position endPosition = new Position(station.getLatitude(), station.getLatitude());
-//            IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(endPosition);
-//            string address = possibleAddresses.FirstOrDefault();
-
-//            Debug.WriteLine("TEST " + address + " TEST");
 
             string route = "https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=" + station.getCoordinates();
 
