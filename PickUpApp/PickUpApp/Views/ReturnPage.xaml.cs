@@ -26,12 +26,6 @@ namespace PickUpApp.Views
         {
             Geocoder geoCoder = new Geocoder();
 
-            IEnumerable<Position> approximateLocations = await geoCoder.GetPositionsForAddressAsync("Lentos, Linz, Österreich");
-            Position startPosition = approximateLocations.FirstOrDefault();
-            string coordinates = $"{startPosition.Latitude}, {startPosition.Longitude}";
-
-            Debug.WriteLine(coordinates);
-
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 50;
             var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(10000));
@@ -39,6 +33,8 @@ namespace PickUpApp.Views
             Debug.WriteLine("Position Status: {0}", position.Timestamp);
             Debug.WriteLine("Position Latitude: {0}", position.Latitude);
             Debug.WriteLine("Position Longitude: {0}", position.Longitude);
+
+            string coordinates = position.Latitude.ToString() + ", " + position.Longitude.ToString();
 
             Station station = FindNearestStation(coordinates);
 
