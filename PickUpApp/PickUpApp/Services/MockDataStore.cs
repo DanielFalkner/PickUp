@@ -8,7 +8,7 @@ namespace PickUpApp.Services
 {
     public class MockDataStore : IDataStore<Delivery>
     {
-        readonly List<Delivery> items;
+        List<Delivery> items;
 
         List<Station> stations;
 
@@ -43,6 +43,11 @@ namespace PickUpApp.Services
         public List<Station> GetStations()
         {
             return stations;
+        }
+
+        public List<Delivery> GetDeliveries()
+        {
+            return items;
         }
 
         public async Task<bool> AddItemAsync(Delivery item)

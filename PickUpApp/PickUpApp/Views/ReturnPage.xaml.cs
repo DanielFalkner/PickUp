@@ -68,6 +68,15 @@ namespace PickUpApp.Views
         {
             Grid2.IsVisible = true;
             Grid1.IsVisible = false;
+
+            List<Delivery> deliveries = new List<Delivery>();
+            for (int i = 0; i < dataStore.GetDeliveries().Count; i++)
+            {
+                if(dataStore.GetDeliveries()[i].GetStatus() == Status.Versendet)
+                {
+                    deliveries.Add(dataStore.GetDeliveries()[i]);
+                }
+            }
         }
     }
 }

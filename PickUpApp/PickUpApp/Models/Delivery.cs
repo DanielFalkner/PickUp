@@ -46,5 +46,16 @@ namespace PickUpApp.Models
         public Status Status { get => status; set => status = value; }
         public Person Detour { get => detour; set => detour = value; }
         public string SignatureReleaseAuthorization { get => signatureReleaseAuthorization; set => signatureReleaseAuthorization = value; }
+
+        public Status GetStatus()
+        {
+            return status;
+        }
+
+        public DateTime GetEstimatedDelivery()
+        {
+            return estimatedDelivery;
+        }
+
     }
 }
