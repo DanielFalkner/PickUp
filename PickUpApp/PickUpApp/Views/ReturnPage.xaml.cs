@@ -24,39 +24,41 @@ namespace PickUpApp.Views
         //not possible on emulator, only on android device (possibly on iOS as well, but not tested yet)
         private async void OnStationClicked(object sender, EventArgs e)
         {
-            Geocoder geoCoder = new Geocoder();
-
-            var locator = CrossGeolocator.Current;
-            locator.DesiredAccuracy = 50;
-            var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(10000));
-
-            Debug.WriteLine("Position Status: {0}", position.Timestamp);
-            Debug.WriteLine("Position Latitude: {0}", position.Latitude);
-            Debug.WriteLine("Position Longitude: {0}", position.Longitude);
-
-            string coordinates = position.Latitude.ToString() + ", " + position.Longitude.ToString();
-
-            Station station = FindNearestStation(coordinates);
-
-            Debug.WriteLine("TEST " + station.getName() + " TEST");
-
-            string route = "https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=" + station.getCoordinates();
-
-            Grid2.IsVisible = false;
-            Grid1.IsVisible = true;
-
-            if (Device.RuntimePlatform == Device.Android)
+            if (IsPickerSelected())
             {
-                await Launcher.OpenAsync(route);
-            }
-            else if (Device.RuntimePlatform == Device.iOS)
-            {
-                await Launcher.OpenAsync(route);
-            }
+                Geocoder geoCoder = new Geocoder();
 
+                var locator = CrossGeolocator.Current;
+                locator.DesiredAccuracy = 50;
+                var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(10000));
+
+                Debug.WriteLine("Position Status: {0}", position.Timestamp);
+                Debug.WriteLine("Position Latitude: {0}", position.Latitude);
+                Debug.WriteLine("Position Longitude: {0}", position.Longitude);
+
+                string coordinates = position.Latitude.ToString() + ", " + position.Longitude.ToString();
+
+                Station station = FindNearestStation(coordinates, picker.ToString());
+
+                Debug.WriteLine("TEST " + station.getName() + " TEST");
+
+                string route = "https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=" + station.getCoordinates();
+
+                Grid2.IsVisible = false;
+                Grid1.IsVisible = true;
+
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    await Launcher.OpenAsync(route);
+                }
+                else if (Device.RuntimePlatform == Device.iOS)
+                {
+                    await Launcher.OpenAsync(route);
+                }
+            }
         }
 
-        private Station FindNearestStation(String demoCoordinates)
+        private Station FindNearestStation(String demoCoordinates, String demoSize)
         {
             List<Station> stations = dataStore.GetStations();
             int r = rnd.Next(stations.Count);
@@ -66,17 +68,30 @@ namespace PickUpApp.Views
 
         private void OnDeliveryClicked(object sender, EventArgs e)
         {
-            Grid2.IsVisible = true;
-            Grid1.IsVisible = false;
-
-            List<Delivery> deliveries = new List<Delivery>();
-            for (int i = 0; i < dataStore.GetDeliveries().Count; i++)
+            if (IsPickerSelected())
             {
-                if(dataStore.GetDeliveries()[i].GetStatus() == Status.Versendet)
+                Grid2.IsVisible = true;
+                Grid1.IsVisible = false;
+
+                List<Delivery> deliveries = new List<Delivery>();
+                for (int i = 0; i < dataStore.GetDeliveries().Count; i++)
                 {
-                    deliveries.Add(dataStore.GetDeliveries()[i]);
+                    if (dataStore.GetDeliveries()[i].GetStatus() == Status.Versendet)
+                    {
+                        deliveries.Add(dataStore.GetDeliveries()[i]);
+                    }
                 }
             }
+        }
+
+        private Boolean IsPickerSelected()
+        {
+            if (picker.SelectedItem == null)
+            {
+                DisplayAlert("Size Selection", "The size of the box has to be selected", "Okay");
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:PickUpApp.ViewModels" x:DataType="viewmodels:ReturnViewModel"
              x:Class="PickUpApp.Views.ReturnPage">
     <StackLayout Margin="0,0,0,0">
         <Label Text="Boxdaten auswählen" HorizontalTextAlignment="Center" TextColor="Black" FontSize="22"/>
@@ -44,6 +44,7 @@
             <Grid Grid.Row="1" HeightRequest="100" WidthRequest="375" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
                 <Button Text="Für Abholung von Lieferant anmelden"/>
             </Grid>
+            
         </Grid>
 
     </StackLayout>

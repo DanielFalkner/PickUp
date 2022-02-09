@@ -18,11 +18,20 @@ namespace PickUpApp.Services
             {
                 
                 new Delivery("103647785543", new Person("Zalando", "a.b@abc.com", 321, 999, new Xamarin.Essentials.Location()), 
-                             new Person("Receiver", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),3.0, Size.Groß, new QRCoder.QRCode(), Status.auftretende_Probleme, new Xamarin.Essentials.Location(), DateTime.Now),
+                             new Person("Receiver", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
+                             3.0, Size.Groß, new QRCoder.QRCode(), Status.auftretende_Probleme, new Xamarin.Essentials.Location(), DateTime.Now),
                 new Delivery("245632876433", new Person("Amazon", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
-                             new Person("Receiver", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),3.0, Size.Mittel, new QRCoder.QRCode(), Status.Zugestellt, new Xamarin.Essentials.Location(), DateTime.MinValue),
+                             new Person("Receiver", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
+                             3.0, Size.Mittel, new QRCoder.QRCode(), Status.Zugestellt, new Xamarin.Essentials.Location(), DateTime.MinValue),
                 new Delivery("183447785543", new Person("Muster GmbH", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
-                             new Person("Receiver", "muster@gmx.com", 123, 123, new Xamarin.Essentials.Location()),3.0, Size.Klein, new QRCoder.QRCode(), Status.In_Bearbeitung, new Xamarin.Essentials.Location(), DateTime.MaxValue)
+                             new Person("Receiver", "muster@gmx.com", 123, 123, new Xamarin.Essentials.Location()),
+                             3.0, Size.Klein, new QRCoder.QRCode(), Status.In_Bearbeitung, new Xamarin.Essentials.Location(), DateTime.MaxValue),
+                new Delivery("test", new Person("Muster GmbH", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
+                             new Person("Receiver", "muster@gmx.com", 123, 123, new Xamarin.Essentials.Location()),
+                             3.0, Size.Klein, new QRCoder.QRCode(), Status.Versendet, new Xamarin.Essentials.Location(), new DateTime(2022, 8, 2, 12, 0, 0, 0)),
+                new Delivery("test2", new Person("Muster GmbH", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
+                             new Person("Receiver", "muster@gmx.com", 123, 123, new Xamarin.Essentials.Location()),
+                             3.0, Size.Klein, new QRCoder.QRCode(), Status.Versendet, new Xamarin.Essentials.Location(), new DateTime(2022, 9, 3, 12, 0, 0, 0))
                 /*
                 new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
                 new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." },
