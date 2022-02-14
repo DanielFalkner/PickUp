@@ -31,12 +31,12 @@ namespace PickUpApp.Views
 
         private async void OnItemDetailPageClicked(object sender, EventArgs args)
         {
-            string button = ((Button)sender).Text;
-            await Navigation.PushAsync(new ItemDetailPage(button));
+            string button = ((Button)sender).Text; // the Text of Button is the ItemId
+            await Navigation.PushAsync(new ItemDetailPage(button)); // it is given to the DetailPage
         }
         private async void OnNewItemPageClicked(object sender, EventArgs e)
         {
-           await Navigation.PushAsync(new NewItemPage(_viewModel));
+            await Navigation.PushAsync(new NewItemPage(_viewModel)); // viewModel handed over to make the access possible to the ItemList
         }
 
     }

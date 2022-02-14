@@ -10,6 +10,8 @@ namespace PickUpApp.Services
         Task<bool> UpdateItemAsync(T item);
         Task<bool> DeleteItemAsync(string id);
         Task<T> GetItemAsync(string id);
+        Task<bool> AddItemByStringAsync(string id);
+        Task<IEnumerable<T>> GetItemsSelectedAsync();
         Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);
     }
 }

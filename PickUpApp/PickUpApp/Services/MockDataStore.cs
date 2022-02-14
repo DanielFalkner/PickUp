@@ -9,7 +9,7 @@ namespace PickUpApp.Services
     public class MockDataStore : IDataStore<Delivery>
     {
         List<Delivery> items;
-
+        List<Delivery> selectedItems;
         List<Station> stations;
 
         public MockDataStore()
@@ -41,6 +41,10 @@ namespace PickUpApp.Services
                 new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }*/
             };
 
+            selectedItems = new List<Delivery>();
+            AddItemByStringAsync("103647785543");
+            AddItemByStringAsync("245632876433");
+
             stations = new List<Station>()
             {
                 new Station(1, "Abholstation 4020", "48.303723880697106, 14.293336868540937", 48.3037238, 14.2933368),
@@ -64,6 +68,25 @@ namespace PickUpApp.Services
             items.Add(item);
 
             return await Task.FromResult(true);
+        }
+        //Add existing item from Database
+        public async Task<bool> AddItemByStringAsync(string id)
+        {
+            foreach (Delivery item in items)
+            {
+                if (item.Id == id)
+                {
+                    selectedItems.Add(item);
+                }
+            }
+
+
+            return await Task.FromResult(true);
+        }
+
+        public async Task<IEnumerable<Delivery>> GetItemsSelectedAsync()
+        {
+            return await Task.FromResult(selectedItems);
         }
 
         public async Task<bool> UpdateItemAsync(Delivery item)
