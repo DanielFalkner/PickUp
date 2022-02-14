@@ -51,6 +51,7 @@ namespace PickUpApp.ViewModels
         public DateTime EstimatedDelivery { get => estimatedDelivery; set => estimatedDelivery = value; }
         public Size Size { get => size; set => size = value; }
 
+        //LoadItem von DataStore
         public async void LoadItemId(string itemId)
         {
             try

@@ -12,11 +12,11 @@
         <StackLayout Orientation="Vertical" Padding="30" Spacing="40">
             <BoxView HeightRequest="10"/>
             <Image HorizontalOptions="Center" WidthRequest="300" Source="PaketBackgroud.jpg"/>
-                    <Entry x:Name="Email" Placeholder="Email"   
+                    <Entry Text="admin" x:Name="Email" Placeholder="Email"   
                            PlaceholderColor="Gray" HeightRequest="40"   
                            Keyboard="Email"  
                            TextColor="White"/>
-            <Entry x:Name="Password" Placeholder="Password" PlaceholderColor="Gray" HeightRequest="40"   
+            <Entry Text="admin" x:Name="Password" Placeholder="Password" PlaceholderColor="Gray" HeightRequest="40"   
                            IsPassword="True"  
                            TextColor="White"/>
             <Button Text="Login" TextColor="White"  

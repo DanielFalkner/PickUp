@@ -13,7 +13,7 @@ namespace PickUpApp.ViewModels
         private Delivery _selectedItem;
 
         public ObservableCollection<Delivery> Items { get; }
-        //public Command LoadItemsCommand { get; }
+        public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
         public Command<Delivery> ItemTapped { get; }
 
@@ -21,13 +21,14 @@ namespace PickUpApp.ViewModels
         {
             Title = "Browse";
             Items = new ObservableCollection<Delivery>();
-            //LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
             ItemTapped = new Command<Delivery>(OnItemSelected);
 
             AddItemCommand = new Command(OnAddItem);
         }
-        /*
+        
         async Task ExecuteLoadItemsCommand()
         {
             IsBusy = true;
@@ -35,7 +36,7 @@ namespace PickUpApp.ViewModels
             try
             {
                 Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
+                var items = await DataStore.GetItemsSelectedAsync();
                 foreach (var item in items)
                 {
                     Items.Add(item);
@@ -49,7 +50,7 @@ namespace PickUpApp.ViewModels
             {
                 IsBusy = false;
             }
-        }*/
+        }
         
         // TODO löschen
         public void OnAppearing()

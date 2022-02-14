@@ -9,7 +9,7 @@ namespace PickUpApp.Services
     public class MockDataStore : IDataStore<Delivery>
     {
         readonly List<Delivery> items;
-
+        List<Delivery> selectedItems;
         public MockDataStore()
         {
             items = new List<Delivery>()
@@ -29,6 +29,10 @@ namespace PickUpApp.Services
                 new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
                 new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }*/
             };
+
+            selectedItems = new List<Delivery>();
+            AddItemByStringAsync("103647785543");
+            AddItemByStringAsync("245632876433");
         }
 
         public async Task<bool> AddItemAsync(Delivery item)
@@ -37,6 +41,26 @@ namespace PickUpApp.Services
 
             return await Task.FromResult(true);
         }
+        //Add existing item from Database
+        public async Task<bool> AddItemByStringAsync(string id)
+        {
+            foreach (Delivery item in items)
+            {
+                if (item.Id == id)
+                {
+                    selectedItems.Add(item);
+                }
+            }
+
+      
+            return await Task.FromResult(true);
+        }
+       
+        public async Task<IEnumerable<Delivery>> GetItemsSelectedAsync()
+        {
+            return await Task.FromResult(selectedItems);
+        }
+
 
         public async Task<bool> UpdateItemAsync(Delivery item)
         {

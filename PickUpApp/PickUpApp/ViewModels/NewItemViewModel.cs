@@ -43,9 +43,9 @@ namespace PickUpApp.ViewModels
 
         private async void OnSave()
         {
-            Delivery newItem = await DataStore.GetItemAsync(Text);
+            await DataStore.AddItemByStringAsync(Text);
 
-            ItemsViewModel.Items.Add(newItem);
+           // ItemsViewModel.Items.Add(newItem);
 
             // This will pop the current page off the navigation stack
             //await Shell.Current.GoToAsync("..");
