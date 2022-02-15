@@ -20,7 +20,7 @@
                            TextColor="White"/>
             <Button Text="Login" TextColor="White"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand" BackgroundColor="Green" 
-                    BorderColor="Green" BorderWidth="1.5" CornerRadius="50" Clicked="Button_Clicked"/>
+                    BorderColor="Green" BorderWidth="1.5" CornerRadius="50" Clicked="OnLoginButtonClicked"/>
             
             <Label HorizontalOptions="Center">
                 <Label.FormattedText>
