@@ -14,7 +14,7 @@ namespace PickUpApp.Services
         {
             items = new List<Delivery>()
             {
-                //Hallo
+                //Hallo...
                 new Delivery("103647785543", new Person("Zalando", "a.b@abc.com", 321, 999, new Xamarin.Essentials.Location()), 
                              new Person("Receiver", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),3.0, Size.Groß, new QRCoder.QRCode(), Status.auftretende_Probleme, new Xamarin.Essentials.Location(), DateTime.Now),
                 new Delivery("245632876433", new Person("Amazon", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
