@@ -35,7 +35,7 @@ namespace PickUpApp.Models
 
         public void giveUp(Delivery delivery)
         {
-            
+
         }
         public void pickUp(Delivery delivery)
         {

@@ -9,34 +9,40 @@ namespace PickUpApp.Models
     {
         //private Map<Size, amount> place;
         private int id;
-        private List<Delivery> deliveries;
-        private int availableBoxes;
+        private string name;
+        private String coordinates;
+        double latitude;
+        double longitude;
          
         // "base" works like "super" in Java 
-        public Station (int id , int availablBoxes) : base() { 
+        public Station (int id, String name, String coordinates, double latitude, double longitude) : base() { 
             this.id = id;
-            this.availableBoxes = availablBoxes;
-            this.deliveries = new List<Delivery> ();
-
-         
+            this.name = name;
+            this.coordinates = coordinates;
+            this.latitude = latitude;
+            this.longitude = longitude;
         }
         public int Id { get => id; set => id = value; }
-        public int AvailableBoxes { get => availableBoxes; set => availableBoxes = value; }
 
-        public void GiveIn (Delivery delivery) {
-            deliveries.Add(delivery);
-        }
-
-        public void PickUp(Delivery delivery)
+        public String getCoordinates()
         {
-            deliveries.Remove(delivery);
+            return coordinates;
         }
 
-
-        //TODO!!
-         public void ReturnBox(Delivery delivery)
+        public double getLatitude()
         {
-            deliveries.Add(delivery);
+            return latitude;
         }
+
+        public double getLongitude()
+        {
+            return longitude;
+        }
+
+        public String getName()
+        {
+            return name;
+        }
+
     }
 }
