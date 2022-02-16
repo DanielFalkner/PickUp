@@ -28,7 +28,7 @@ namespace PickUpApp.Views
             base.OnAppearing();
             _viewModel.OnAppearing();
         }
-
+        
         private async void OnItemDetailPageClicked(object sender, EventArgs args)
         {
             string button = ((Button)sender).Text; // the Text of Button is the ItemId

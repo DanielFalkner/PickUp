@@ -8,11 +8,11 @@ namespace PickUpApp.Services
 {
     public class MockDataStore : IDataStore<Delivery>
     {
-        readonly List<Delivery> items;
-        List<Delivery> selectedItems;
         List<Delivery> items;
-
+        List<Delivery> selectedItems;
         List<Station> stations;
+
+
 
         public MockDataStore()
         {

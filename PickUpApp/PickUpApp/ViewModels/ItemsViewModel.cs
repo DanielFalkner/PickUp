@@ -52,7 +52,7 @@ namespace PickUpApp.ViewModels
             }
         }
         
-        // TODO löschen
+       
         public void OnAppearing()
         {
             IsBusy = true;
