@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:PickUpApp.ViewModels" x:DataType="viewmodels:ItemDetailViewModel"
              x:Class="PickUpApp.Views.ItemDetailPage"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             xmlns:zxingcommon="clr-namespace:ZXing.Common;assembly=zxing.portable"
              Title="{Binding Title}">
 
     <StackLayout Spacing="20" Padding="15">
@@ -13,6 +15,11 @@
         <Label Text="{Binding EstimatedDelivery}" FontSize="Small"/>
         <Label Text="Größe:" FontSize="Medium" FontAttributes="Bold" />
         <Label Text="{Binding Size}" FontSize="Small"/>
+        <zxing:ZXingBarcodeImageView BarcodeValue="Box wird geöffnet" WidthRequest="300" HeightRequest="300">
+            <zxing:ZXingBarcodeImageView.BarcodeOptions>
+                <zxingcommon:EncodingOptions Height="300" Width="300"/>
+            </zxing:ZXingBarcodeImageView.BarcodeOptions>
+        </zxing:ZXingBarcodeImageView>
     </StackLayout>
     
 </ContentPage>
