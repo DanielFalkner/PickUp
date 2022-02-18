@@ -1,4 +1,5 @@
-﻿using PickUpApp.Models;
+﻿using Microsoft.Identity.Client;
+using PickUpApp.Models;
 using PickUpApp.ViewModels;
 using PickUpApp.Views;
 using System;
@@ -22,6 +23,7 @@ namespace PickUpApp.Views
 
             BindingContext = _viewModel = new ItemsViewModel();
         }
+
 
         protected override void OnAppearing()
         {

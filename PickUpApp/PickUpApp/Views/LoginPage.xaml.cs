@@ -31,7 +31,7 @@ namespace PickUpApp.Views
                         .AcquireTokenSilent(Constants.Scopes, accounts.FirstOrDefault())
                         .ExecuteAsync();
 
-                    await Navigation.PushAsync(new LoginResultPage(result));
+                    await Navigation.PushAsync(new AboutPage(result));
                 }
             }
             catch
@@ -54,7 +54,7 @@ namespace PickUpApp.Views
                     .WithParentActivityOrWindow(App.UIParent)
                     .ExecuteAsync();
 
-                await Navigation.PushAsync(new LoginResultPage(result));
+                await Navigation.PushAsync(new AboutPage(result));
             }
             catch (MsalClientException ex)
             {

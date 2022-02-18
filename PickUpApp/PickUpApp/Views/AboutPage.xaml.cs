@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Identity.Client;
+using System;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,6 +11,15 @@ namespace PickUpApp.Views
         public AboutPage()
         {
             InitializeComponent();
+        }
+
+        private AuthenticationResult authenticationResult;
+        public AboutPage(AuthenticationResult authResult)
+        {
+            authenticationResult = authResult;
+            var name = authenticationResult.Account.Username;
+            InitializeComponent();
+
         }
 
         private async void OnReturnButtonClicked(object sender, EventArgs args)

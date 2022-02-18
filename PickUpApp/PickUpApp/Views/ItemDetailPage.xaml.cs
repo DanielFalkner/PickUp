@@ -1,4 +1,5 @@
-﻿using PickUpApp.ViewModels;
+﻿using Microsoft.Identity.Client;
+using PickUpApp.ViewModels;
 using System.ComponentModel;
 using Xamarin.Forms;
 
@@ -11,5 +12,6 @@ namespace PickUpApp.Views
             InitializeComponent();
             BindingContext = new ItemDetailViewModel(id);
         }
+
     }
 }
