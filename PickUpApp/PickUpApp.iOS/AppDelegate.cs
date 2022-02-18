@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Microsoft.Identity.Client;
 using UIKit;
 
 namespace PickUpApp.iOS
@@ -27,6 +28,12 @@ namespace PickUpApp.iOS
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url);
+            return base.OpenUrl(app, url, options);
         }
 
     }
