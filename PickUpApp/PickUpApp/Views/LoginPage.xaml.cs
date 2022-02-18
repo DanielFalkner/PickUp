@@ -1,4 +1,5 @@
-﻿using PickUpApp.ViewModels;
+﻿using Microsoft.Identity.Client;
+using PickUpApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,16 +17,48 @@ namespace PickUpApp.Views
         {
             InitializeComponent();
         }
-
-        private void Button_Clicked(object sender, EventArgs e)
+        // Behavior "asyn"
+        protected override async void OnAppearing()
         {
-            if(Email.Text == "admin" && Password.Text == "admin")
+            try
             {
-                Navigation.PushAsync(new AboutPage());
+                // Look for existing account
+                IEnumerable<IAccount> accounts = await App.AuthenticationClient.GetAccountsAsync();
+
+                if (accounts.Count() >= 1)
+                {
+                    AuthenticationResult result = await App.AuthenticationClient
+                        .AcquireTokenSilent(Constants.Scopes, accounts.FirstOrDefault())
+                        .ExecuteAsync();
+
+                    await Navigation.PushAsync(new LoginResultPage(result));
+                }
             }
-            else
+            catch
             {
-                DisplayAlert("LoginErrorMessage", "Username or Password incorrect","Okay");
+                // Do nothing - the user isn't logged in
+            }
+            base.OnAppearing();
+        }
+
+        async void OnSignInClicked(object sender, EventArgs e)
+        {
+
+            AuthenticationResult result;
+
+            try
+            {
+                result = await App.AuthenticationClient
+                    .AcquireTokenInteractive(Constants.Scopes)
+                    .WithPrompt(Prompt.ForceLogin)
+                    .WithParentActivityOrWindow(App.UIParent)
+                    .ExecuteAsync();
+
+                await Navigation.PushAsync(new LoginResultPage(result));
+            }
+            catch (MsalClientException ex)
+            {
+
             }
         }
     }
