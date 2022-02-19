@@ -4,6 +4,8 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Android.Nfc;
+using Google.Android.Material.FloatingActionButton;
 
 namespace PickUpApp.Droid
 {
