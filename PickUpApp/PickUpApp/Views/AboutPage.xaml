@@ -10,11 +10,18 @@
             <Label x:Name="welcome"/>
             <Label Text=""/>
             <StackLayout Orientation="Vertical">
+                <ImageButton HorizontalOptions="Center" Source="https://img.icons8.com/glyph-neue/200/000000/mobile-order.png" HeightRequest="50" Clicked="OnItemsButtonClicked" Command="{Binding CancelCommand}"/>
+                <ImageButton HorizontalOptions="Center" Source="https://img.icons8.com/external-itim2101-lineal-color-itim2101/200/000000/external-order-shopping-and-ecommerce-itim2101-lineal-color-itim2101.png" HeightRequest="50" Command="{Binding SaveCommand}"/>
+                <ImageButton HorizontalOptions="Center" Source="https://img.icons8.com/external-justicon-lineal-justicon/200/000000/external-qr-code-black-friday-justicon-lineal-justicon.png" HeightRequest="50" Command="{Binding SaveCommand}"/>
+                <ImageButton HorizontalOptions="Center" Source="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/2000/000000/external-status-agile-flaticons-lineal-color-flat-icons-2.png" HeightRequest="50" Command="{Binding SaveCommand}"/>
+                <ImageButton HorizontalOptions="Center" Source="https://img.icons8.com/external-inipagistudio-lineal-color-inipagistudio/200/000000/external-return-logistic-service-inipagistudio-lineal-color-inipagistudio.png" HeightRequest="50" Clicked="OnReturnButtonClicked"/>
+                <!--
                 <Button Text="Lieferübersicht" Clicked="OnItemsButtonClicked" Command="{Binding CancelCommand}" BackgroundColor="LightSteelBlue" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Bestellübersicht" Command="{Binding SaveCommand}" BackgroundColor="LightSteelBlue" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="QR Code" Command="{Binding SaveCommand}" BackgroundColor="LightSteelBlue" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Status" Command="{Binding SaveCommand}" BackgroundColor="LightSteelBlue" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Behälter retounieren" Clicked="OnReturnButtonClicked" BackgroundColor="LightSteelBlue" HorizontalOptions="FillAndExpand"></Button>
+                -->
                 <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                     <Button x:Name="SignOutBtn" Text="Sign out" Clicked="SignOutBtn_Clicked"/>
                 </StackLayout>
