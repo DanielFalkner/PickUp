@@ -7,15 +7,20 @@
 
     <ContentPage.Content>
         <StackLayout Spacing="3" Padding="15">
-            <Label Text="Du befindest dich nun auf der Startseite" FontSize="Medium" />
+            <Label x:Name="welcome"/>
+            <Label Text=""/>
             <StackLayout Orientation="Vertical">
                 <Button Text="Lieferübersicht" Clicked="OnItemsButtonClicked" Command="{Binding CancelCommand}" BackgroundColor="LightSteelBlue" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Bestellübersicht" Command="{Binding SaveCommand}" BackgroundColor="LightSteelBlue" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="QR Code" Command="{Binding SaveCommand}" BackgroundColor="LightSteelBlue" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Status" Command="{Binding SaveCommand}" BackgroundColor="LightSteelBlue" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Behälter retounieren" Clicked="OnReturnButtonClicked" BackgroundColor="LightSteelBlue" HorizontalOptions="FillAndExpand"></Button>
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Button x:Name="SignOutBtn" Text="Sign out" Clicked="SignOutBtn_Clicked"/>
+                </StackLayout>
             </StackLayout>
         </StackLayout>
+
     </ContentPage.Content>
 
 </ContentPage>

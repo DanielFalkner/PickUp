@@ -56,7 +56,7 @@ namespace PickUpApp.Views
 
                 await Navigation.PushAsync(new AboutPage(result));
             }
-            catch (MsalClientException ex)
+            catch (MsalClientException)
             {
 
             }

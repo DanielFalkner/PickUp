@@ -1,6 +1,7 @@
 ﻿using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,11 +15,9 @@ namespace PickUpApp.Views
     public partial class LoginResultPage : ContentPage
     {
         private AuthenticationResult authenticationResult;
-        public LoginResultPage(AuthenticationResult authResult)
-        {
-            authenticationResult = authResult;
-            var name = authenticationResult.Account.Username;
-            InitializeComponent();
-        }
+
+
+
+       
     }
 }
