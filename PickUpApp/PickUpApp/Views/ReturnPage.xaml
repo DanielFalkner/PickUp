@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:PickUpApp.ViewModels" x:DataType="viewmodels:ReturnViewModel"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:PickUpApp.ViewModels"
+             xmlns:model="clr-namespace:PickUpApp.Models" 
+             x:DataType="viewmodels:ReturnViewModel"
              x:Class="PickUpApp.Views.ReturnPage">
     <StackLayout Margin="0,0,0,0">
         <Label Text="Boxdaten auswählen" HorizontalTextAlignment="Center" TextColor="Black" FontSize="22"/>
@@ -34,17 +37,31 @@
         </Grid>
 
         <Grid x:Name="Grid2" IsVisible="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                <Label FontSize="Medium" HorizontalTextAlignment="Center" Text="Aktive Bestellung notwendig um Abholung der Box durch einen Lieferanten auszuwählen"/>
-            </Grid>
-            <Grid Grid.Row="1" HeightRequest="100" WidthRequest="375" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
-                <Button Text="Für Abholung von Lieferant anmelden"/>
-            </Grid>
-            
+            <RefreshView x:DataType="viewmodels:ReturnViewModel" Command="{Binding LoadDeliveriesCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <CollectionView x:Name="ItemsListView"
+                            ItemsSource="{Binding Deliveries}"
+                            SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10" x:DataType="model:Delivery">
+                                <Button Text="{Binding Id}"
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        Clicked="OnItemDetailPageClicked"
+                                        BackgroundColor="LightSteelBlue"     
+                                        FontSize="18" FontAttributes="Bold"/>
+                                <Label Text="{Binding EstimatedDelivery}" 
+                                        LineBreakMode="NoWrap"    
+                                        Style="{DynamicResource ListItemDetailTextStyle}"     
+                                        FontSize="14"/>
+                                <Label Text="{Binding Status}" 
+                                        LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemDetailTextStyle}"    
+                                        FontSize="14" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
         </Grid>
 
     </StackLayout>

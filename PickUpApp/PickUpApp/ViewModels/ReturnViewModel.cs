@@ -1,32 +1,75 @@
-﻿using DevExpress.Data.XtraReports.Native;
-using DocumentFormat.OpenXml.Drawing.Charts;
-using Microsoft.FSharp.Linq.RuntimeHelpers;
-using PickUpApp.Models;
+﻿using PickUpApp.Models;
+using PickUpApp.Views;
 using PickUpApp.Services;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace PickUpApp.ViewModels
 {
-    public class ReturnViewModel : BindableObject
+    public class ReturnViewModel : BaseViewModel
     {
-        public ObservableCollection<Delivery> Delivery = new ObservableCollection<Delivery> ();
+        public ObservableCollection<Delivery> Deliveries { get; }
 
         MockDataStore dataStore = new MockDataStore();
+        public Command LoadDeliveriesCommand { get; }
+        public Command<Delivery> DeliveryTapped { get; }
 
         public ReturnViewModel()
         {
-            Delivery = new ObservableRangeCollection<Delivery>();
-            for (int i = 0; i < dataStore.GetDeliveries().Count; i++)
+            Deliveries = new ObservableCollection<Delivery>();
+
+            LoadDeliveriesCommand = new Command(async () => await ExecuteLoadDeliveryCommand());
+
+            DeliveryTapped = new Command<Delivery>(OnDeliverySelected);
+
+        }
+
+        async Task ExecuteLoadDeliveryCommand()
+        {
+            IsBusy = true;
+            try
             {
-                if (dataStore.GetDeliveries()[i].GetStatus() == Status.Versendet)
+                Deliveries.Clear();
+                var items = await DataStore.GetDeliveriesAsync();
+                foreach (var item in items)
                 {
-                    Delivery.Add(dataStore.GetDeliveries()[i]);
+                    if(item.Status == Status.Versendet)
+                    {
+                        Deliveries.Add(item);
+                    }  
                 }
+                /*
+                for (int i = 0; i < dataStore.GetDeliveries().Count; i++)
+                {
+                    if (dataStore.GetDeliveries()[i].GetStatus() == Status.Versendet)
+                    {
+                        Deliveries.Add(dataStore.GetDeliveries()[i]);
+                    }
+                }
+                */
+                Debug.WriteLine("DELIVERIES LSITE LÄNGE: " + Deliveries.Count);
             }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+
+        }
+
+        async void OnDeliverySelected(Delivery delivery)
+        {
+            if (delivery == null)
+                return;
+
+            // This will push the ItemDetailPage onto the navigation stack
+            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={delivery.Id}");
         }
     }
 }

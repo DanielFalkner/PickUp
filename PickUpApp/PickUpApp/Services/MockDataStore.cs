@@ -33,6 +33,12 @@ namespace PickUpApp.Services
                              3.0, Size.Klein, new QRCoder.QRCode(), Status.Versendet, new Xamarin.Essentials.Location(), new DateTime(2022, 8, 2, 12, 0, 0, 0)),
                 new Delivery("test2", new Person("Muster GmbH", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
                              new Person("Receiver", "muster@gmx.com", 123, 123, new Xamarin.Essentials.Location()),
+                             3.0, Size.Klein, new QRCoder.QRCode(), Status.Versendet, new Xamarin.Essentials.Location(), new DateTime(2022, 9, 3, 12, 0, 0, 0)),
+                new Delivery("test3", new Person("Muster GmbH", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
+                             new Person("Receiver", "muster@gmx.com", 123, 123, new Xamarin.Essentials.Location()),
+                             3.0, Size.Klein, new QRCoder.QRCode(), Status.Versendet, new Xamarin.Essentials.Location(), new DateTime(2022, 1, 3, 12, 0, 0, 0)),
+                new Delivery("test4", new Person("Muster GmbH", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
+                             new Person("Receiver", "muster@gmx.com", 123, 123, new Xamarin.Essentials.Location()),
                              3.0, Size.Klein, new QRCoder.QRCode(), Status.Versendet, new Xamarin.Essentials.Location(), new DateTime(2022, 9, 3, 12, 0, 0, 0))
                 /*
                 new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
@@ -85,7 +91,14 @@ namespace PickUpApp.Services
       
             return await Task.FromResult(true);
         }
-       
+
+        //for returnBox
+        public async Task<IEnumerable<Delivery>> GetDeliveriesAsync()
+        {
+            return await Task.FromResult(items);
+        }
+
+
         public async Task<IEnumerable<Delivery>> GetItemsSelectedAsync()
         {
             return await Task.FromResult(selectedItems);

@@ -1,5 +1,6 @@
 ﻿using PickUpApp.Models;
 using PickUpApp.Services;
+using PickUpApp.ViewModels;
 using Plugin.Geolocator;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,13 @@ namespace PickUpApp.Views
         MockDataStore dataStore = new MockDataStore();
         static Random rnd = new Random();
 
+        ReturnViewModel _viewModel;
+
         public ReturnPage()
         {
             InitializeComponent();
+
+            BindingContext = _viewModel = new ReturnViewModel();
         }
 
         //not possible on emulator, only on android device (possibly on iOS as well, but not tested yet)
@@ -72,15 +77,6 @@ namespace PickUpApp.Views
             {
                 Grid2.IsVisible = true;
                 Grid1.IsVisible = false;
-
-                List<Delivery> deliveries = new List<Delivery>();
-                for (int i = 0; i < dataStore.GetDeliveries().Count; i++)
-                {
-                    if (dataStore.GetDeliveries()[i].GetStatus() == Status.Versendet)
-                    {
-                        deliveries.Add(dataStore.GetDeliveries()[i]);
-                    }
-                }
             }
         }
 
@@ -92,6 +88,12 @@ namespace PickUpApp.Views
                 return false;
             }
             return true;
+        }
+        //Just temporarly in there for testing; gets replaced
+        private async void OnItemDetailPageClicked(object sender, EventArgs args)
+        {
+            string button = ((Button)sender).Text; // the Text of Button is the ItemId
+            await Navigation.PushAsync(new ItemDetailPage(button)); // it is given to the DetailPage
         }
     }
 }

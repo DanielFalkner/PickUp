@@ -13,5 +13,8 @@ namespace PickUpApp.Services
         Task<bool> AddItemByStringAsync(string id);
         Task<IEnumerable<T>> GetItemsSelectedAsync();
         Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);
+
+        //for returnBox
+        Task<IEnumerable<T>> GetDeliveriesAsync();
     }
 }
