@@ -84,16 +84,15 @@ namespace PickUpApp.Views
         {
             if (picker.SelectedItem == null)
             {
-                DisplayAlert("Size Selection", "The size of the box has to be selected", "Okay");
+                DisplayAlert("Größenauswahl", "Die Boxgröße muss zuerst ausgewählt werden", "Okay");
                 return false;
             }
             return true;
         }
-        //Just temporarly in there for testing; gets replaced
         private async void OnItemDetailPageClicked(object sender, EventArgs args)
         {
             string button = ((Button)sender).Text; // the Text of Button is the ItemId
-            await Navigation.PushAsync(new ItemDetailPage(button)); // it is given to the DetailPage
+            await Navigation.PushAsync(new ReturnDetailPage(button)); // it is given to the DetailPage
         }
     }
 }
