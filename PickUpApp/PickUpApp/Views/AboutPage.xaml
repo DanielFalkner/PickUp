@@ -11,6 +11,7 @@
             <StackLayout Orientation="Vertical">
                 <Button Text="Lieferübersicht" Clicked="OnItemsButtonClicked" Command="{Binding CancelCommand}" BackgroundColor="LightSteelBlue" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Bestellübersicht" Command="{Binding SaveCommand}" BackgroundColor="LightSteelBlue" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Sendungsverfolgung" Clicked="OnNewItemPageClicked" Command="{Binding SaveCommand}" BackgroundColor="LightSteelBlue" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="QR Code" Command="{Binding SaveCommand}" BackgroundColor="LightSteelBlue" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Status" Command="{Binding SaveCommand}" BackgroundColor="LightSteelBlue" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Behälter retounieren" Clicked="OnReturnButtonClicked" BackgroundColor="LightSteelBlue" HorizontalOptions="FillAndExpand"></Button>

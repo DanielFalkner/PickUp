@@ -43,7 +43,7 @@ namespace PickUpApp.ViewModels
 
         private async void OnSave()
         {
-            await DataStore.AddItemByStringAsync(Text);
+           // await DataStore.AddItemByStringAsync(Text);
 
            // ItemsViewModel.Items.Add(newItem);
 

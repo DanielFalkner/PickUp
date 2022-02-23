@@ -1,4 +1,5 @@
 ﻿using Microsoft.Identity.Client;
+using PickUpApp.ViewModels;
 using System;
 using System.ComponentModel;
 using Xamarin.Forms;
@@ -14,6 +15,8 @@ namespace PickUpApp.Views
         }
 
         private AuthenticationResult authenticationResult;
+        private ItemsViewModel _viewModel;
+
         public AboutPage(AuthenticationResult authResult)
         {
             authenticationResult = authResult;
@@ -30,6 +33,11 @@ namespace PickUpApp.Views
         private void OnItemsButtonClicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new ItemsPage());
+        }
+
+        private async void OnNewItemPageClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewItemPage(_viewModel)); // viewModel handed over to make the access possible to the ItemList
         }
     }
 }

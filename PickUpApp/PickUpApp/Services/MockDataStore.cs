@@ -9,7 +9,7 @@ namespace PickUpApp.Services
     public class MockDataStore : IDataStore<Delivery>
     {
         List<Delivery> items;
-        List<Delivery> selectedItems;
+       // List<Delivery> selectedItems;
         List<Station> stations;
 
 
@@ -19,25 +19,25 @@ namespace PickUpApp.Services
             items = new List<Delivery>()
             {
                 //Hallo...
-                new Delivery("103647785543", new Person("Zalando", "a.b@abc.com", 321, 999, new Xamarin.Essentials.Location()), 
+                new Delivery("1036", new Person("Zalando", "a.b@abc.com", 321, 999, new Xamarin.Essentials.Location()), 
                              new Person("Receiver", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
                              3.0, Size.Groß, new QRCoder.QRCode(), Status.auftretende_Probleme, new Xamarin.Essentials.Location(), DateTime.Now),
-                new Delivery("245632876433", new Person("Amazon", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
+                new Delivery("2456", new Person("Amazon", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
                              new Person("Receiver", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
                              3.0, Size.Mittel, new QRCoder.QRCode(), Status.Zugestellt, new Xamarin.Essentials.Location(), DateTime.MinValue),
-                new Delivery("183447785543", new Person("Muster GmbH", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
+                new Delivery("1834", new Person("Muster GmbH", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
                              new Person("Receiver", "muster@gmx.com", 123, 123, new Xamarin.Essentials.Location()),
                              3.0, Size.Klein, new QRCoder.QRCode(), Status.In_Bearbeitung, new Xamarin.Essentials.Location(), DateTime.MaxValue),
-                new Delivery("test", new Person("Muster GmbH", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
+                new Delivery("2029", new Person("Muster GmbH", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
                              new Person("Receiver", "muster@gmx.com", 123, 123, new Xamarin.Essentials.Location()),
                              3.0, Size.Klein, new QRCoder.QRCode(), Status.Versendet, new Xamarin.Essentials.Location(), new DateTime(2022, 8, 2, 12, 0, 0, 0)),
-                new Delivery("test2", new Person("Muster GmbH", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
+                new Delivery("4032", new Person("Muster GmbH", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
                              new Person("Receiver", "muster@gmx.com", 123, 123, new Xamarin.Essentials.Location()),
                              3.0, Size.Klein, new QRCoder.QRCode(), Status.Versendet, new Xamarin.Essentials.Location(), new DateTime(2022, 9, 3, 12, 0, 0, 0)),
-                new Delivery("test3", new Person("Muster GmbH", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
+                new Delivery("5051", new Person("Muster GmbH", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
                              new Person("Receiver", "muster@gmx.com", 123, 123, new Xamarin.Essentials.Location()),
                              3.0, Size.Klein, new QRCoder.QRCode(), Status.Versendet, new Xamarin.Essentials.Location(), new DateTime(2022, 1, 3, 12, 0, 0, 0)),
-                new Delivery("test4", new Person("Muster GmbH", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
+                new Delivery("2890", new Person("Muster GmbH", "a.b@abc.com", 123, 123, new Xamarin.Essentials.Location()),
                              new Person("Receiver", "muster@gmx.com", 123, 123, new Xamarin.Essentials.Location()),
                              3.0, Size.Klein, new QRCoder.QRCode(), Status.Versendet, new Xamarin.Essentials.Location(), new DateTime(2022, 9, 3, 12, 0, 0, 0))
                 /*
@@ -49,9 +49,9 @@ namespace PickUpApp.Services
                 new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }*/
             };
 
-            selectedItems = new List<Delivery>();
+          /*  selectedItems = new List<Delivery>();
             AddItemByStringAsync("103647785543");
-            AddItemByStringAsync("245632876433");
+            AddItemByStringAsync("245632876433");*/
 
             stations = new List<Station>()
             {
@@ -78,7 +78,7 @@ namespace PickUpApp.Services
             return await Task.FromResult(true);
         }
         //Add existing item from Database
-        public async Task<bool> AddItemByStringAsync(string id)
+       /* public async Task<bool> AddItemByStringAsync(string id)
         {
             foreach (Delivery item in items)
             {
@@ -90,7 +90,7 @@ namespace PickUpApp.Services
 
       
             return await Task.FromResult(true);
-        }
+        }*/
 
         //for returnBox
         public async Task<IEnumerable<Delivery>> GetDeliveriesAsync()
@@ -99,10 +99,10 @@ namespace PickUpApp.Services
         }
 
 
-        public async Task<IEnumerable<Delivery>> GetItemsSelectedAsync()
+       /* public async Task<IEnumerable<Delivery>> GetItemsSelectedAsync()
         {
             return await Task.FromResult(selectedItems);
-        }
+        }*/
 
 
         public async Task<bool> UpdateItemAsync(Delivery item)
