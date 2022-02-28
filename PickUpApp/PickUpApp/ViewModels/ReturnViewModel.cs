@@ -25,6 +25,8 @@ namespace PickUpApp.ViewModels
 
             DeliveryTapped = new Command<Delivery>(OnDeliverySelected);
 
+            IsBusy = true;
+
         }
 
         async Task ExecuteLoadDeliveryCommand()
@@ -41,15 +43,6 @@ namespace PickUpApp.ViewModels
                         Deliveries.Add(item);
                     }  
                 }
-                /*
-                for (int i = 0; i < dataStore.GetDeliveries().Count; i++)
-                {
-                    if (dataStore.GetDeliveries()[i].GetStatus() == Status.Versendet)
-                    {
-                        Deliveries.Add(dataStore.GetDeliveries()[i]);
-                    }
-                }
-                */
                 Debug.WriteLine("DELIVERIES LSITE LÄNGE: " + Deliveries.Count);
             }
             catch (Exception ex)

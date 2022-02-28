@@ -43,7 +43,7 @@ namespace PickUpApp.Views
 
                 string coordinates = position.Latitude.ToString() + ", " + position.Longitude.ToString();
 
-                Station station = FindNearestStation(coordinates, picker.ToString());
+                Station station = FindNearestStation(coordinates, smallBox.ToString(), mediumBox.ToString(), largeBox.ToString());
 
                 Debug.WriteLine("TEST " + station.getName() + " TEST");
 
@@ -63,7 +63,7 @@ namespace PickUpApp.Views
             }
         }
 
-        private Station FindNearestStation(String demoCoordinates, String demoSize)
+        private Station FindNearestStation(String demoCoordinates, String smallBox, String mediumBox, String largeBox)
         {
             List<Station> stations = dataStore.GetStations();
             int r = rnd.Next(stations.Count);
@@ -82,9 +82,9 @@ namespace PickUpApp.Views
 
         private Boolean IsPickerSelected()
         {
-            if (picker.SelectedItem == null)
+            if (smallBox.Text.Equals("0") && mediumBox.Text.Equals("0") && largeBox.Text.Equals("0"))
             {
-                DisplayAlert("Größenauswahl", "Die Boxgröße muss zuerst ausgewählt werden", "Okay");
+                DisplayAlert("Größenauswahl", "Es muss mindestens eine Box retouniert werden", "Okay");
                 return false;
             }
             return true;

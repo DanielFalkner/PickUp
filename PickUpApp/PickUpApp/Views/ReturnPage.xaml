@@ -7,17 +7,19 @@
              x:Class="PickUpApp.Views.ReturnPage">
     <StackLayout Margin="0,0,0,0">
         <Label Text="Boxdaten auswählen" HorizontalTextAlignment="Center" TextColor="Black" FontSize="22"/>
-        <Picker x:Name="picker"
-        Title="Boxgröße:"
-        TitleColor="#2196F3">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Small</x:String>
-                    <x:String>Medium</x:String>
-                    <x:String>Large</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+            <Label Text="Small:" FontSize="20" VerticalOptions="Center"/>
+            <Entry x:Name="smallBox" Keyboard="Numeric" Text="0"></Entry>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Medium:" FontSize="20" VerticalOptions="Center"/>
+            <Entry x:Name="mediumBox" Keyboard="Numeric" Text="0"></Entry>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Large:" FontSize="20" VerticalOptions="Center"/>
+            <Entry x:Name="largeBox" Keyboard="Numeric" Text="0"></Entry>
+            
+        </StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
             <Button Text="Zur Station bringen" Clicked="OnStationClicked"/>
             <Button Text="Abholen lassen" Clicked="OnDeliveryClicked"/>
