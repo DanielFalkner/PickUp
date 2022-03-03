@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickUpApp.Android", "PickUp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickUpApp.iOS", "PickUpApp\PickUpApp.iOS\PickUpApp.iOS.csproj", "{7235F19B-5579-4D6A-915B-841C73F6462A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickUpApp", "PickUpApp\PickUpApp\PickUpApp.csproj", "{9413C29B-6F2B-4094-B534-1C05DA815926}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PickUpApp", "PickUpApp\PickUpApp\PickUpApp.csproj", "{9413C29B-6F2B-4094-B534-1C05DA815926}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
