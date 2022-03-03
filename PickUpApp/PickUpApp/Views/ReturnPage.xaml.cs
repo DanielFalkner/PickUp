@@ -26,27 +26,21 @@ namespace PickUpApp.Views
             BindingContext = _viewModel = new ReturnViewModel();
         }
 
-        //not possible on emulator, only on android device (possibly on iOS as well, but not tested yet)
+        //loads Google Maps with nearest Station
         private async void OnStationClicked(object sender, EventArgs e)
         {
             if (IsPickerSelected())
             {
                 Geocoder geoCoder = new Geocoder();
 
+                //Gets Coordinates of the Device
                 var locator = CrossGeolocator.Current;
                 locator.DesiredAccuracy = 50;
                 var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(10000));
-
-                Debug.WriteLine("Position Status: {0}", position.Timestamp);
-                Debug.WriteLine("Position Latitude: {0}", position.Latitude);
-                Debug.WriteLine("Position Longitude: {0}", position.Longitude);
-
                 string coordinates = position.Latitude.ToString() + ", " + position.Longitude.ToString();
 
+                //Creates Google Maps URL to the Station
                 Station station = FindNearestStation(coordinates, smallBox.ToString(), mediumBox.ToString(), largeBox.ToString());
-
-                Debug.WriteLine("TEST " + station.getName() + " TEST");
-
                 string route = "https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=" + station.getCoordinates();
 
                 Grid2.IsVisible = false;
@@ -63,6 +57,7 @@ namespace PickUpApp.Views
             }
         }
 
+        //Gets Coordinates of the Device and the amount of returned Boxes to find the nearest Station
         private Station FindNearestStation(String demoCoordinates, String smallBox, String mediumBox, String largeBox)
         {
             List<Station> stations = dataStore.GetStations();
@@ -80,6 +75,7 @@ namespace PickUpApp.Views
             }
         }
 
+        //Checks if User selected at least 1 box to return
         private Boolean IsPickerSelected()
         {
             if (smallBox.Text.Equals("0") && mediumBox.Text.Equals("0") && largeBox.Text.Equals("0"))

@@ -6,7 +6,7 @@
              x:DataType="viewmodels:ReturnViewModel"
              x:Class="PickUpApp.Views.ReturnPage">
     <StackLayout Margin="0,0,0,0">
-        <Label Text="Boxdaten auswählen" HorizontalTextAlignment="Center" TextColor="Black" FontSize="22"/>
+        <Label Text="Anzahl der Behälter zum retounieren eingeben:" HorizontalTextAlignment="Center" TextColor="White" FontSize="22"/>
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
             <Label Text="Small:" FontSize="20" VerticalOptions="Center"/>
             <Entry x:Name="smallBox" Keyboard="Numeric" Text="0"></Entry>
@@ -18,7 +18,11 @@
         <StackLayout Orientation="Horizontal">
             <Label Text="Large:" FontSize="20" VerticalOptions="Center"/>
             <Entry x:Name="largeBox" Keyboard="Numeric" Text="0"></Entry>
-            
+        </StackLayout>
+        <StackLayout>
+            <Label Text="Zur Station bringen ladet in Google Maps die nächst gelegene Paketstation, in der deine Behälter Platz haben"></Label>
+            <Label Text="Abholen lassen zeigt dir deine Bestellungen an, welche am Weg zu dir sind."></Label>
+            <Label Text="Melde dich für eine Bestellung an, um den Lieferanten deine Behälter zurückzugeben"></Label>
         </StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
             <Button Text="Zur Station bringen" Clicked="OnStationClicked"/>

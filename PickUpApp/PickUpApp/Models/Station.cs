@@ -7,14 +7,12 @@ namespace PickUpApp.Models
 {
     public class Station : Location
     {
-        //private Map<Size, amount> place;
         private int id;
         private string name;
         private String coordinates;
         double latitude;
         double longitude;
          
-        // "base" works like "super" in Java 
         public Station (int id, String name, String coordinates, double latitude, double longitude) : base() { 
             this.id = id;
             this.name = name;

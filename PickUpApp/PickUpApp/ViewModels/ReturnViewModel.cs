@@ -20,15 +20,13 @@ namespace PickUpApp.ViewModels
         public ReturnViewModel()
         {
             Deliveries = new ObservableCollection<Delivery>();
-
             LoadDeliveriesCommand = new Command(async () => await ExecuteLoadDeliveryCommand());
-
             DeliveryTapped = new Command<Delivery>(OnDeliverySelected);
-
             IsBusy = true;
 
         }
 
+        //Loads Deliveries with Status "Versendet" into ReturnPage.xaml
         async Task ExecuteLoadDeliveryCommand()
         {
             IsBusy = true;
@@ -43,7 +41,6 @@ namespace PickUpApp.ViewModels
                         Deliveries.Add(item);
                     }  
                 }
-                Debug.WriteLine("DELIVERIES LSITE LÄNGE: " + Deliveries.Count);
             }
             catch (Exception ex)
             {
